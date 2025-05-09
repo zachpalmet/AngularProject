@@ -1,0 +1,70 @@
+<!-- src/app/pages/contact/contact.component.html -->
+<div class="page-content">
+    <h2>Contact Us</h2>
+    <p>Have questions or feedback? Send us a message!</p>
+    <hr>
+  
+    <!-- Show success message after submission -->
+    <div *ngIf="formSubmitted" class="alert alert-success" role="alert">
+      Thank you for your message! We'll get back to you if needed.
+    </div>
+  
+    <!-- Hide form after submission -->
+    <form *ngIf="!formSubmitted" (ngSubmit)="onSubmit()">
+      <!-- Name Input -->
+      <div class="mb-3">
+        <label for="contactName" class="form-label">Your Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="contactName"
+          name="contactName"
+          [(ngModel)]="contactForm.name"
+          required
+          #nameInput="ngModel"> <!-- Template variable for validation state (optional) -->
+         <!-- Basic validation message (optional) -->
+         <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="text-danger mt-1 small">
+            <div *ngIf="nameInput.errors?.['required']">Name is required.</div>
+         </div>
+      </div>
+  
+      <!-- Email Input -->
+      <div class="mb-3">
+        <label for="contactEmail" class="form-label">Your Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="contactEmail"
+          name="contactEmail"
+          [(ngModel)]="contactForm.email"
+          required
+          email #emailInput="ngModel"> <!-- 'email' validator -->
+         <!-- Basic validation message (optional) -->
+         <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger mt-1 small">
+            <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</div>
+         </div>
+      </div>
+  
+      <!-- Message Textarea -->
+      <div class="mb-3">
+        <label for="contactMessage" class="form-label">Message</label>
+        <textarea
+          class="form-control"
+          id="contactMessage"
+          name="contactMessage"
+          rows="4"
+          [(ngModel)]="contactForm.message"
+          required
+          #messageInput="ngModel"></textarea>
+        <!-- Basic validation message (optional) -->
+        <div *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched)" class="text-danger mt-1 small">
+            <div *ngIf="messageInput.errors?.['required']">Message is required.</div>
+         </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <!-- Button might be disabled if form is invalid (add [disabled]="contactNgForm.invalid" to button if you add #contactNgForm="ngForm" to the <form> tag) -->
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>

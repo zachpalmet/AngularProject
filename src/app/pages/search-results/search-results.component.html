@@ -1,0 +1,60 @@
+<!-- src/app/pages/search-results/search-results.component.html -->
+<div class="page-content">
+  <h2>Search PC Builds</h2>
+
+  <!-- Search Input -->
+  <div class="mb-3 mt-3">
+    <label for="searchBox" class="form-label">Search by Name, Description, Components, Use Case:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="searchBox"
+      placeholder="Enter search term..."
+      [(ngModel)]="searchTerm"
+      (input)="search()"
+      />
+      <!-- [(ngModel)] binds input value to component's searchTerm property -->
+      <!-- (input)="search()" calls the search method on every input change -->
+  </div>
+
+  <hr>
+
+<!-- src/app/pages/search-results/search-results.component.html -->
+
+<!-- ... (Existing code for search input and *ngIf) ... -->
+
+<div *ngIf="builds && builds.length > 0; else noBuilds">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div *ngFor="let build of builds" class="col">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ build.name }}</h5>
+          <p class="card-text">{{ build.description }}</p>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><strong>CPU:</strong> {{ build.cpu }}</li>
+            <li><strong>GPU:</strong> {{ build.gpu }}</li>
+            <li><strong>RAM:</strong> {{ build.ram }}</li>
+            <li><strong>Storage:</strong> {{ build.storage }}</li>
+            <li><strong>Use Case:</strong> {{ build.useCase }}</li>
+          </ul>
+          <p class="card-text mt-auto">
+             <strong>Approx. Price:</strong> ${{ build.approxPrice }}
+          </p>
+          <!-- Add View Details Button/Link -->
+          <a [routerLink]="['/build', build.id]" class="btn btn-sm btn-outline-primary mt-2 align-self-start">
+            View Details
+          </a>
+          <!-- [routerLink] binds to an array: path segments go inside -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noBuilds>
+  <p>No builds found matching your search criteria.</p>
+</ng-template>
+
+<!-- ... (Rest of the template) ... -->
+
+</div>

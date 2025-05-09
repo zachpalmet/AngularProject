@@ -1,0 +1,42 @@
+<!-- src/app/pages/home/home.component.html -->
+<div class="page-content">
+
+  <!-- Jumbotron-like section -->
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Build Your Perfect PC with AI</h1>
+      <p class="col-md-8 fs-4">
+        Stop guessing! AI PC Part Picker helps you find compatible components tailored
+        to your needs and budget. Whether you're gaming, creating, or working,
+        we simplify the build process.
+      </p>
+      <!-- Link styled as a button using routerLink -->
+      <a routerLink="/search" class="btn btn-primary btn-lg">Start Searching Builds</a>
+    </div>
+  </div>
+
+  <!-- Feature Highlights (using columns) -->
+  <div class="row align-items-md-stretch">
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h2>Intelligent Matching</h2>
+        <p>
+          Our (simulated) AI considers thousands of parts to find the optimal combination
+          for your specific requirements and budget constraints.
+        </p>
+        <!-- <button class="btn btn-outline-light" type="button">Learn More</button> -->
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Easy Search & Compare</h2>
+        <p>
+          Quickly search through pre-defined build examples. Compare components and
+          understand the trade-offs for your ideal setup. (Detail view coming soon!).
+        </p>
+         <a routerLink="/search" class="btn btn-outline-secondary">Search Now</a>
+      </div>
+    </div>
+  </div>
+
+</div>

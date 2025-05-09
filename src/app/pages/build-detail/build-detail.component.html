@@ -1,0 +1,39 @@
+<!-- src/app/pages/build-detail/build-detail.component.html -->
+<div class="page-content">
+    <!-- Show details only if the build object exists -->
+    <div *ngIf="build; else notFound">
+      <h2>{{ build.name }} Details</h2>
+      <hr>
+      <p><strong>Description:</strong> {{ build.description }}</p>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>ID:</strong> {{ build.id }}</li>
+            <li class="list-group-item"><strong>CPU:</strong> {{ build.cpu }}</li>
+            <li class="list-group-item"><strong>GPU:</strong> {{ build.gpu }}</li>
+            <li class="list-group-item"><strong>RAM:</strong> {{ build.ram }}</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Storage:</strong> {{ build.storage }}</li>
+            <li class="list-group-item"><strong>Use Case:</strong> {{ build.useCase }}</li>
+            <li class="list-group-item"><strong>Approx. Price:</strong> ${{ build.approxPrice }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <hr>
+      <!-- Back button using RouterLink -->
+      <a routerLink="/search" class="btn btn-secondary mt-3">Back to Search</a>
+  
+    </div>
+  
+    <!-- Template shown if build is not found -->
+    <ng-template #notFound>
+      <div class="alert alert-warning" role="alert">
+        Build details not found. It might not exist or there was an error loading data.
+        <a routerLink="/search" class="alert-link"> Go back to search?</a>
+      </div>
+    </ng-template>
+  </div>
